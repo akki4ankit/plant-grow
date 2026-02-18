@@ -12,30 +12,52 @@ import {
 import { CustomInput } from '../../Common/Input';
 import CustomText from '../../Common/CustomText';
 import fontStyles from '../../Common/fontStyles';
+// import axios from 'axios';
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const translateYAnim = useRef(new Animated.Value(-50)).current;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-useEffect(() => {
-  Animated.parallel([
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 500,
-      useNativeDriver: true,
-    }),
-    Animated.timing(translateYAnim, {
-      toValue: 0,
-      duration: 800,
-      useNativeDriver: true,
-    }),
-  ]).start();
-}, [fadeAnim, translateYAnim]);
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 500,
+        useNativeDriver: true,
+      }),
+      Animated.timing(translateYAnim, {
+        toValue: 0,
+        duration: 800,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, [fadeAnim, translateYAnim]);
 
+//   const addPlant = async plantData => {
+//     try {
+//       const body = {
+//         name: 'Mint',
+//         type: 'Medicinal',
+//         price: 150,
+//       };
+//       const response = await axios.post(`http://10.0.2.2:3000/api/plants`, body);
+//       console.log('Add plant response:', response.data);
+//       return response.data;
+//     } catch (error) {
+//       console.error('Add plant error:', error.response?.data || error.message);
+//       throw error;
+//     }
+//   };
+//   const getPlants = async () => {
+//   const res = await axios.get(`http://10.0.2.2:3000/api/plants`);
+//   console.log('Plants:', res.data);};
 
+// useEffect(() => {
+//   getPlants();
+// }, []);
   return (
     <ImageBackground
       source={require('../../Assets/Images/plant.jpg')}
@@ -75,7 +97,11 @@ useEffect(() => {
               secureTextEntry
               onChangeText={setPassword}
             />
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Signup')}>
+            <TouchableOpacity
+              style={styles.button}
+              // onPress={addPlant}
+              onPress={() => navigation.navigate('Home')}
+            >
               <CustomText style={styles.buttonText}>LOGIN</CustomText>
             </TouchableOpacity>
           </Animated.View>
