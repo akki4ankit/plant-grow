@@ -9,11 +9,11 @@ import {
   Animated,
   ScrollView,
 } from 'react-native';
-import { CustomInput } from '../Common/Input';
-import CustomText from '../Common/CustomText';
-import fontStyles from '../Common/fontStyles';
+import { CustomInput } from '../../Common/Input';
+import CustomText from '../../Common/CustomText';
+import fontStyles from '../../Common/fontStyles';
 
-const Login = () => {
+const Login = ({navigation}) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const translateYAnim = useRef(new Animated.Value(-50)).current;
 
@@ -38,7 +38,7 @@ useEffect(() => {
 
   return (
     <ImageBackground
-      source={require('../Assets/Images/plant.jpg')}
+      source={require('../../Assets/Images/plant.jpg')}
       style={styles.background}
       resizeMode="cover"
     >
@@ -75,7 +75,7 @@ useEffect(() => {
               secureTextEntry
               onChangeText={setPassword}
             />
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Signup')}>
               <CustomText style={styles.buttonText}>LOGIN</CustomText>
             </TouchableOpacity>
           </Animated.View>

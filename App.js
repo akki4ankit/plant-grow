@@ -1,13 +1,13 @@
-import { View, Text } from 'react-native'
 import React from 'react'
-import Login from './SRC/Screens/Login'
+import StackNav from './SRC/Navigation/StackNav'
+import { NavigationContainer } from '@react-navigation/native'
 
 const App = () => {
   return (
-    <View style={{ flex: 1 }}>
-     <Login />
-    </View>
+    <NavigationContainer>
+     <StackNav />
+    </NavigationContainer>
   )
 }
 
-export default App
+export default App;
